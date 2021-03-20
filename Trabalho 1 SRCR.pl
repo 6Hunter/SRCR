@@ -54,3 +54,77 @@ vacinação_Covid(5, 8, '09-01-2021', 'Pfizer', '2').
 vacinação_Covid(4, 5, '02-01-2021', 'Pfizer', '2').
 vacinação_Covid(9, 9, '09-02-2021', 'Pfizer', '1').
 vacinação_Covid(2, 1, '28-02-2021', 'Pfizer', '1').
+
+% --------------------------------------------------------------------
+% Extensão do predicado que permite a procura do conhecimento: Termo, Predicado, Lista -> {V,F}
+
+solucoes(X,Y,Z) :- findall(X,Y,Z).
+
+% --------------------------------------------------------------------
+% Extensão do predicado que permite a negação: N -> {V,F}
+
+nao(N) :- N,!,false.
+nao(_).
+
+% --------------------------------------------------------------------
+% Extensão do predicado que permite concluir se um elemento pertence a uma lista: Elemento, Lista -> {V,F}
+
+pertence(H,[H|_]).
+pertence(E,[H|T]) :-
+	E \= H,
+	pertence(E,T).
+
+% --------------------------------------------------------------------
+% Extensão do predicado que permite colocar uma lista com elementos únicos: Lista_Original, Lista_Reultado -> {V,F}
+
+semRepetidos([],[]).
+semRepetidos([H|T], R) :-
+	pertence(H,T),
+	semRepetidos(T,R).
+semRepetidos([H|T], [H|R]) :-
+	nao(pertence(H,T)),
+	semRepetidos(T,R).
+
+% --------------------------------------------------------------------
+% Extensão do predicado que permite determinar a maior entre duas datas
+
+maiorData(D1-M1-A1,D2-M2-A2,D2-M2-A2) :- 
+	A2 > A1;
+	(A2 == A1, M2 > M1);
+	(A2 == A1, M2 == M1, D2 >= D1).
+maiorData(D1-M1-A1,D2-M2-A2,D1-M1-A1) :- 
+	A2 < A1;
+	(A2 == A1, M2 < M1);
+	(A2 == A1, M2 == M1, D2 < D1).
+
+
+% --------------------------------------------------------------------
+% Extensão do predicado que permite perceber se a segunda dose foi administrada atempadamente
+
+% --------------------------------------------------------------------
+% Extensão do predicado que permite identificar as pessoas vacinadas
+
+vacinados(R) :-
+	solucoes(Id,(vacinação_Covid(_,Id,_,_,_)),R1),
+	semRepetidos(R1,R).
+
+% --------------------------------------------------------------------
+% Extensão do predicado que permite identificar as pessoas não vacinadas
+
+naoVacinados(R) :-
+	solucoes((Id,Ss,Nome,Data,Email,Telefone,Morada,Profissão,Doenças_Crónicas,CentroSaúde),(utente(Id,Ss,Nome,Data,Email,Telefone,Morada,Profissão,Doenças_Crónicas,CentroSaúde),nao(vacinação_Covid(_,Id,_,_,_))),R).
+
+
+% --------------------------------------------------------------------
+% Extensão do predicado que permite identificar as pessoas vacinadas indevidamente
+
+
+% --------------------------------------------------------------------
+% Extensão do predicado que permite identificar as pessoas não vacinadas e candidatas ao mesmo
+
+
+% --------------------------------------------------------------------
+% Extensão do predicado que permite identificar as pessoas vacinadas com a lacuna da segunda dose
+
+consultaTomasVacinas(Toma, R) :-
+	solucoes((Id,Ss,Nome,Data,Email,Telefone,Morada,Profissão,Doenças_Crónicas,CentroSaúde),(utente(Id,Ss,Nome,Data,Email,Telefone,Morada,Profissão,Doenças_Crónicas,CentroSaúde), vacinação_Covid(_,Id,_,_,Toma)), R).
