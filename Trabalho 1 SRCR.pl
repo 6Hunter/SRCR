@@ -20,26 +20,26 @@
 :- dynamic centro_saúde/5.
 :- dynamic staff/4.
 :- dynamic vacinação_Covid/5.
-%:- dynamic fases/3.
+:- dynamic fases/4.
 
 
 % ---------------------------------------------------------------------
 % Extensão do predicado utente: #Idutente, NºSegurança_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profissão, [Doenças_Crónicas], #CentroSaúde -> {V,F}
 
-utente(1, '50577343592', 'Henrique Severo Espargosa', '19-09-1963', 'heriqueespargosa@gmail.com', '925660961', 'Avenida da Liberdade', 'Barbeiro', '[Artrite Reumatóide]', '1').
-utente(2, '76660664525', 'Kévin Brandão Outeiro', '30-10-1995', 'kevinouteiro@gmail.com', '926067176', 'Rua da Liberdade', 'Bartender', '[Parkinson]', '2').
-utente(3, '19053925216', 'Anabel Pederneiras Batata', '28-04-1919', 'anabelbatata@gmail.com', '923462300', 'Rua 25 de Abril', 'Reformado', '[Insuficiência cardíaca, Diabetes]', '1').
-utente(4, '56156406212', 'Isabelly Prada Couto', '11-07-1981', 'isabellycouto@gmail.com', '925865324', 'Avenida 25 de Abril', 'Desempregado', '[SIDA]', '3').
-utente(5, '85012667165', 'Alessia Trindade Farias', '06-10-1923', 'alessiafarias@gmail.com', '922100314', 'Rua do Carmo', 'Reformado', '[Escoliose]', '1').
-utente(6, '21435653330', 'Dafne Barreno Delgado', '05-01-1980', 'dafnedelgado@gmail.com', '923154251', 'Avenida do Carmo', 'Taxista', '[Obesidade]', '2').
-utente(7, '55257724030', 'Amélia Barrico Cerqueira', '25-03-1968', 'ameliacerqueira@gmail.com', '929156442', 'Rua do Pontido', 'Advogado', '[]', '2').
-utente(8, '32321985798', 'Jaden Carregueiro Bernardes', '27-12-1936', 'jadenbernardes@gmail.com', '927466477', 'Rua Nossa Senhora de Fátima', 'Cantor', '[Pós-Transplante de Órgão]', '3').
-utente(9, '74899994834', 'Élia Paranhos Sobreira', '22-05-1953', 'eliasobreira@gmail.com', '920712898', 'Rua dos Peões', 'Professor', '[Doença Celíaca]', '1').
-utente(10, '61341191054', 'Aura Dourado Filipe', '15-01-1998', 'aurafilipe@gmail.com', '921342600', 'Rua Nova de Santa Cruz', 'Estudante', '[]', '3').
+utente(1, '50577343592', 'Henrique Severo Espargosa', 19-09-1963, 'heriqueespargosa@gmail.com', '925660961', 'Avenida da Liberdade', 'Barbeiro', '[Artrite Reumatóide]', '1').
+utente(2, '76660664525', 'Kévin Brandão Outeiro', 30-10-1995, 'kevinouteiro@gmail.com', '926067176', 'Rua da Liberdade', 'Bartender', '[Parkinson]', '2').
+utente(3, '19053925216', 'Anabel Pederneiras Batata', 28-04-1919, 'anabelbatata@gmail.com', '923462300', 'Rua 25 de Abril', 'Reformado', '[Insuficiência cardíaca, Diabetes]', '1').
+utente(4, '56156406212', 'Isabelly Prada Couto', 11-07-1981, 'isabellycouto@gmail.com', '925865324', 'Avenida 25 de Abril', 'Desempregado', '[SIDA]', '3').
+utente(5, '85012667165', 'Alessia Trindade Farias', 06-10-1923, 'alessiafarias@gmail.com', '922100314', 'Rua do Carmo', 'Reformado', '[Escoliose]', '1').
+utente(6, '21435653330', 'Dafne Barreno Delgado', 05-01-1980, 'dafnedelgado@gmail.com', '923154251', 'Avenida do Carmo', 'Médico', '[Obesidade]', '2').
+utente(7, '55257724030', 'Amélia Barrico Cerqueira', 25-03-1968, 'ameliacerqueira@gmail.com', '929156442', 'Rua do Pontido', 'Advogado', '[]', '2').
+utente(8, '32321985798', 'Jaden Carregueiro Bernardes', 27-12-1936, 'jadenbernardes@gmail.com', '927466477', 'Rua Nossa Senhora de Fátima', 'Enfermeiro', '[Pós-Transplante de Órgão]', '3').
+utente(9, '74899994834', 'Élia Paranhos Sobreira', 22-05-1953, 'eliasobreira@gmail.com', '920712898', 'Rua dos Peões', 'Professor', '[Doença Celíaca]', '1').
+utente(10, '61341191054', 'Aura Dourado Filipe', 15-01-1998, 'aurafilipe@gmail.com', '921342600', 'Rua Nova de Santa Cruz', 'Estudante', '[]', '3').
 
 
 % ---------------------------------------------------------------------
-%Extensão do predicado centro_saúde: #Idcentro, Nome, Morada, Telefone, Email -> {V,F}
+% Extensão do predicado centro_saúde: #Idcentro, Nome, Morada, Telefone, Email -> {V,F}
 
 centro_saúde(1, 'Centro de Saúde do Alto Minho', 'Lugar de Barreiras, Mazedo, Monção', '255533079', 'centrodesaudeMoncao@gmail.com').
 centro_saúde(2, 'Centro de Saúde do Baixo Ribatejo', 'Rua da Cevadeira, Castanheira do Ribatejo, Vila Franca de Xira', '252745329', 'centrodesaudeXira@gmail.com').
@@ -64,16 +64,19 @@ staff(10 ,1, 'Genésia Rego Barcelos', 'genesiabarcelos@gmail.com').
 % ---------------------------------------------------------------------
 % Extensão do predicado vacinação_Covid: #Staff, #utente, Data, Vacina, Toma -> {V,F}
 
-vacinação_Covid(1, 3, '29-01-2021', 'Pfizer', 2).
-vacinação_Covid(5, 8, '09-01-2021', 'Pfizer', 1).
-vacinação_Covid(4, 5, '02-01-2021', 'Pfizer', 2).
-vacinação_Covid(9, 8, '09-02-2021', 'Pfizer', 2).
-vacinação_Covid(2, 1, '28-02-2021', 'Pfizer', 1).
+vacinação_Covid(1, 3, 29-03-2021, 'Pfizer', 1).
+vacinação_Covid(5, 8, 09-02-2021, 'Pfizer', 1).
+vacinação_Covid(4, 5, 02-04-2021, 'Pfizer', 1).
+vacinação_Covid(9, 8, 09-02-2021, 'Pfizer', 2).
+vacinação_Covid(2, 1, 28-03-2021, 'Pfizer', 1).
 
 
 % ---------------------------------------------------------------------
-% Extensão do predicado fases: #Fases, , Data-> {V,F}
+% Extensão do predicado fases: Fases, Data_Inicial, Data_Final, Características -> {V,F}
 
+fases(1, 01-02-2021, 28-02-2021, 'Ser médico ou Enfermeiro').
+fases(2, 01-03-2021, 31-03-2021, 'Ter mais de 80 ou ter doenças crónicas').
+fases(3, 01-04-2021, 31-04-2021, 'Toda a população').
 
 % ---------------------------------------------------------------------
 % Invariante Estrutural ( Não permitir a inserção de conhecimento repetido)
@@ -267,6 +270,14 @@ dataIntermedia(DI,DF,DA) :-	maiorData(DI,DA,DA),
 
 
 % --------------------------------------------------------------------
+% Extensão do predicado que permite verificar o comprimento de uma lista: Lista, Comprimento -> {V,F}
+
+comprimento([],0).
+comprimento([_|T],N) :- comprimento(T,R),
+						N is R+1.
+
+
+% --------------------------------------------------------------------
 % Extensão do predicado que permite determinar a diferença de datas em dias: Data_Inicio, Data_Fim, Dias -> {V,F}
 
 %diasIntermedios(D1-M1-A1,D,D2-M2-A2) :- (D1 > )
@@ -275,28 +286,31 @@ dataIntermedia(DI,DF,DA) :-	maiorData(DI,DA,DA),
 % --------------------------------------------------------------------
 % Extensão do predicado que permite identificar as pessoas vacinadas
 
-vacinados(S) :-	solucoes((Id,Nome),(utente(Id,_,Nome,_,_,_,_,_,_,_),vacinação_Covid(_,Id,_,_,_)),S1),
+vacinados(S) :-	solucoes((UtenteID,Nome),(utente(UtenteID,_,Nome,_,_,_,_,_,_,_),vacinação_Covid(_,UtenteID,_,_,_)),S1),
 				semRepetidos(S1,S).
 
 
 % --------------------------------------------------------------------
 % Extensão do predicado que permite identificar as pessoas não vacinadas
 
-naoVacinados(S) :- solucoes((Id,Nome),(utente(Id,_,Nome,_,_,_,_,_,_,_),nao(vacinação_Covid(_,Id,_,_,_))),S).
+naoVacinados(S) :- solucoes((UtenteID,Nome),(utente(UtenteID,_,Nome,_,_,_,_,_,_,_),nao(vacinação_Covid(_,UtenteID,_,_,_))),S).
 
 
 % --------------------------------------------------------------------
 % Extensão do predicado que permite identificar as pessoas vacinadas indevidamente
 
+vacinadosIndevidamente(S) :- solucoes((UtenteID,Nome),(utente(UtenteID,_,Nome,_,_,_,_,_,_,_), vacinação_Covid(_,UtenteID,Data,_,1), vacinadoIndevidamente(UtenteID,Data)), S).
+
 
 % --------------------------------------------------------------------
 % Extensão do predicado que permite identificar as pessoas não vacinadas e candidatas ao mesmo
 
+candidatosVacinação(DataAtual, S) :- solucoes((UtenteID,Nome),(utente(UtenteID,_,Nome,_,_,_,_,_,_,_), nao(vacinação_Covid(_,UtenteID,_,_,_)), nao(vacinadoIndevidamente(UtenteID,DataAtual))),S).
 
 % --------------------------------------------------------------------
 % Extensão do predicado que permite identificar as pessoas vacinadas com a lacuna da segunda dose
 
-consultaTomasVacinas(Toma, S) :- solucoes((Id,Nome),(utente(Id,_,Nome,_,_,_,_,_,_,_), vacinação_Covid(_,Id,_,_,Toma)), S).
+faltaSegundaDose(S) :- solucoes((UtenteID,Nome),(utente(UtenteID,_,Nome,_,_,_,_,_,_,_), vacinação_Covid(_,UtenteID,_,_,1), nao(vacinação_Covid(_,UtenteID,_,_,2))), S).
 
 
 % --------------------------------------------------------------------
@@ -305,3 +319,32 @@ consultaTomasVacinas(Toma, S) :- solucoes((Id,Nome),(utente(Id,_,Nome,_,_,_,_,_,
 % segundaDoseAtrasada(UtenteID, S) :-	solucoes(Data,(vacinação_Covid(_,UtenteID,_,_,1)),D1),
 % 									    solucoes(Data,(vacinação_Covid(_,UtenteID,_,_,2)),D2).
 % 									    dataIntermedia
+
+
+% --------------------------------------------------------------------
+% Extensão do predicado que permite identificar a profissão de um utente.
+
+profissãoUtente(UtenteID, X) :- solucoes(Profissão,utente(UtenteID,_,_,_,_,_,_,Profissão,_,_),[X]).
+
+
+% --------------------------------------------------------------------
+% Extensão do predicado que permite identificar se um utente tem mais de 80 anos de idade.
+
+utenteSenior(UtenteID) :- solucoes(Data_Nasc,utente(UtenteID,_,_,Data_Nasc,_,_,_,_,_,_),[S1]),
+						  idade(S1,S),
+						  S >= 80.
+
+
+% --------------------------------------------------------------------
+% Extensão do predicado que permite identificar se um utente tem mais de 80 anos de idade.
+
+utenteDonteCronico(UtenteID) :- solucoes(Doenças_Crónicas,utente(UtenteID,_,_,_,_,_,_,_,Doenças_Crónicas,_),[S1]),
+								nao(S1 == '[]').
+
+
+% --------------------------------------------------------------------
+% Extensão do predicado que permite identificar se utente está indevidamente vacinado.
+
+vacinadoIndevidamente(UtenteID, Data) :- nao((dataIntermedia(01-02-2021,28-02-2021,Data), (profissãoUtente(UtenteID,'Médico'); profissãoUtente(UtenteID,'Enfermeiro')));
+									     (dataIntermedia(01-03-2021,31-03-2021,Data), (utenteSenior(UtenteID); utenteDonteCronico(UtenteID)), nao(profissãoUtente(UtenteID,'Médico'); profissãoUtente(UtenteID,'Enfermeiro')));
+									     (dataIntermedia(01-04-2021,30-04-2021,Data), nao(profissãoUtente(UtenteID,'Médico'); profissãoUtente(UtenteID,'Enfermeiro'); utenteSenior(UtenteID); utenteDonteCronico(UtenteID)))).
