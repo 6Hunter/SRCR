@@ -1,4 +1,4 @@
-% Trabalho 1 de Sistemas de RepresentaÁ„o de Conhecimento e RaciocÌnio
+% Trabalho 1 de Sistemas de Representa√ß√£o de Conhecimento e Racioc√≠nio
 % Grupo 15
 
 % ---------------------------------------------------------------------
@@ -13,79 +13,82 @@
 :- set_prolog_flag(unknown,fail).
 
 % ---------------------------------------------------------------------
-% Base de conhecimento com informaÁ„o sobre utente, centro de sa˙de, staff e vacinaÁ„o Covid
+% Base de conhecimento com informa√ß√£o sobre utente, centro de sa√∫de, staff e vacina√ß√£o Covid
 
 :- op(900,xfy,'::').
 :- dynamic utente/10.
-:- dynamic centro_sa˙de/5.
+:- dynamic centro_sa√∫de/5.
 :- dynamic staff/4.
-:- dynamic vacinaÁ„o_Covid/5.
+:- dynamic vacina√ß√£o_Covid/5.
 :- dynamic fases/4.
 
 
 % ---------------------------------------------------------------------
-% Extens„o do predicado utente: #Idutente, N∫SeguranÁa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss„o, [DoenÁas_CrÛnicas], #CentroSa˙de -> {V,F}
+% Extens√£o do predicado utente: #Idutente, N¬∫Seguran√ßa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss√£o, [Doen√ßas_Cr√≥nicas], #CentroSa√∫de -> {V,F}
 
-utente(1, '50577343592', 'Henrique Severo Espargosa', 19-09-1963, 'heriqueespargosa@gmail.com', '925660961', 'Avenida da Liberdade', 'Barbeiro', '[Artrite ReumatÛide]', '1').
-utente(2, '76660664525', 'KÈvin Brand„o Outeiro', 30-10-1995, 'kevinouteiro@gmail.com', '926067176', 'Rua da Liberdade', 'Bartender', '[Parkinson]', '2').
-utente(3, '19053925216', 'Anabel Pederneiras Batata', 28-04-1919, 'anabelbatata@gmail.com', '923462300', 'Rua 25 de Abril', 'Reformado', '[InsuficiÍncia cardÌaca, Diabetes]', '1').
+utente(1, '50577343592', 'Henrique Severo Espargosa', 19-09-1963, 'heriqueespargosa@gmail.com', '925660961', 'Avenida da Liberdade', 'Barbeiro', '[Artrite Reumat√≥ide]', '1').
+utente(2, '76660664525', 'K√©vin Brand√£o Outeiro', 30-10-1995, 'kevinouteiro@gmail.com', '926067176', 'Rua da Liberdade', 'Bartender', '[Parkinson]', '2').
+utente(3, '19053925216', 'Anabel Pederneiras Batata', 28-04-1919, 'anabelbatata@gmail.com', '923462300', 'Rua 25 de Abril', 'Reformado', '[Insufici√™ncia card√≠aca, Diabetes]', '1').
 utente(4, '56156406212', 'Isabelly Prada Couto', 11-07-1981, 'isabellycouto@gmail.com', '925865324', 'Avenida 25 de Abril', 'Desempregado', '[SIDA]', '3').
 utente(5, '85012667165', 'Alessia Trindade Farias', 06-10-1923, 'alessiafarias@gmail.com', '922100314', 'Rua do Carmo', 'Reformado', '[Escoliose]', '1').
-utente(6, '21435653330', 'Dafne Barreno Delgado', 05-01-1980, 'dafnedelgado@gmail.com', '923154251', 'Avenida do Carmo', 'MÈdico', '[Obesidade]', '2').
-utente(7, '55257724030', 'AmÈlia Barrico Cerqueira', 25-03-1968, 'ameliacerqueira@gmail.com', '929156442', 'Rua do Pontido', 'Advogado', '[]', '2').
-utente(8, '32321985798', 'Jaden Carregueiro Bernardes', 27-12-1936, 'jadenbernardes@gmail.com', '927466477', 'Rua Nossa Senhora de F·tima', 'Enfermeiro', '[PÛs-Transplante de ”rg„o]', '3').
-utente(9, '74899994834', '…lia Paranhos Sobreira', 22-05-1953, 'eliasobreira@gmail.com', '920712898', 'Rua dos Peıes', 'Professor', '[DoenÁa CelÌaca]', '1').
+utente(6, '21435653330', 'Dafne Barreno Delgado', 05-01-1980, 'dafnedelgado@gmail.com', '923154251', 'Avenida do Carmo', 'M√©dico', '[Obesidade]', '2').
+utente(7, '55257724030', 'Am√©lia Barrico Cerqueira', 25-03-1968, 'ameliacerqueira@gmail.com', '929156442', 'Rua do Pontido', 'Advogado', '[]', '2').
+utente(8, '32321985798', 'Jaden Carregueiro Bernardes', 27-12-1936, 'jadenbernardes@gmail.com', '927466477', 'Rua Nossa Senhora de F√°tima', 'Enfermeiro', '[P√≥s-Transplante de √ìrg√£o]', '3').
+utente(9, '74899994834', '√âlia Paranhos Sobreira', 22-05-1953, 'eliasobreira@gmail.com', '920712898', 'Rua dos Pe√µes', 'Professor', '[Doen√ßa Cel√≠aca]', '1').
 utente(10, '61341191054', 'Aura Dourado Filipe', 15-01-1998, 'aurafilipe@gmail.com', '921342600', 'Rua Nova de Santa Cruz', 'Estudante', '[]', '3').
 
 
 % ---------------------------------------------------------------------
-% Extens„o do predicado centro_sa˙de: #Idcentro, Nome, Morada, Telefone, Email -> {V,F}
+% Extens√£o do predicado centro_sa√∫de: #Idcentro, Nome, Morada, Telefone, Email -> {V,F}
 
-centro_sa˙de(1, 'Centro de Sa˙de do Alto Minho', 'Lugar de Barreiras, Mazedo, MonÁ„o', '255533079', 'centrodesaudeMoncao@gmail.com').
-centro_sa˙de(2, 'Centro de Sa˙de do Baixo Ribatejo', 'Rua da Cevadeira, Castanheira do Ribatejo, Vila Franca de Xira', '252745329', 'centrodesaudeXira@gmail.com').
-centro_sa˙de(3, 'Centro de Sa˙de de Lisboa', 'Rua de S. Ciro, Lapa, Lisboa', '259440886', 'centrodesaudeLapa@gmail.com').
+centro_sa√∫de(1, 'Centro de Sa√∫de do Alto Minho', 'Lugar de Barreiras, Mazedo, Mon√ß√£o', '255533079', 'centrodesaudeMoncao@gmail.com').
+centro_sa√∫de(2, 'Centro de Sa√∫de do Baixo Ribatejo', 'Rua da Cevadeira, Castanheira do Ribatejo, Vila Franca de Xira', '252745329', 'centrodesaudeXira@gmail.com').
+centro_sa√∫de(3, 'Centro de Sa√∫de de Lisboa', 'Rua de S. Ciro, Lapa, Lisboa', '259440886', 'centrodesaudeLapa@gmail.com').
 
 
 % ---------------------------------------------------------------------
-% Extens„o do predicado staff: #Idstaff, #Idcentro, Nome, Email -> {V,F}
+% Extens√£o do predicado staff: #Idstaff, #Idcentro, Nome, Email -> {V,F}
 
 staff(1, 1, 'Jacinto Imperial Enes', 'jacintoenes@gmail.com').
-staff(2, 2, 'Leonor Cunha BouÁa', 'leonorbouca@gmail.com').
-staff(3, 3, 'Iara Amarante PeÁanha', 'iarapecanha@gmail.com').
+staff(2, 2, 'Leonor Cunha Bou√ßa', 'leonorbouca@gmail.com').
+staff(3, 3, 'Iara Amarante Pe√ßanha', 'iarapecanha@gmail.com').
 staff(4, 1, 'Raj Malta Varanda', 'rajvaranda@gmail.com').
 staff(5, 2, 'Aleksandr Loio Simas', 'aleksandrsimas@gmail.com').
 staff(6, 3, 'Runa Sequeira Porto', 'ruanporto@gmail.com').
-staff(7, 1, 'Igor FigueirÛ Lucas', 'igorlucas@gmail.com').
+staff(7, 1, 'Igor Figueir√≥ Lucas', 'igorlucas@gmail.com').
 staff(8, 2, 'Vladislav Bernerdes Quirino', 'vladislavquirino@gmail.com').
 staff(9, 3, 'Emanuel Regodeiro Rodovalho', 'regodeirorodovalho@gmail.com').
-staff(10 ,1, 'GenÈsia Rego Barcelos', 'genesiabarcelos@gmail.com').
+staff(10 ,1, 'Gen√©sia Rego Barcelos', 'genesiabarcelos@gmail.com').
 
 
 % ---------------------------------------------------------------------
-% Extens„o do predicado vacinaÁ„o_Covid: #Staff, #utente, Data, Vacina, Toma -> {V,F}
+% Extens√£o do predicado vacina√ß√£o_Covid: #Staff, #utente, Data, Vacina, Toma -> {V,F}
 
-vacinaÁ„o_Covid(1, 3, 29-03-2021, 'Pfizer', 1).
-vacinaÁ„o_Covid(5, 8, 09-02-2021, 'Pfizer', 1).
-vacinaÁ„o_Covid(4, 5, 02-04-2021, 'Pfizer', 1).
-vacinaÁ„o_Covid(9, 8, 09-02-2021, 'Pfizer', 2).
-vacinaÁ„o_Covid(2, 1, 28-03-2021, 'Pfizer', 1).
+vacina√ß√£o_Covid(1, 3, 29-03-2021, 'Pfizer', 1).
+vacina√ß√£o_Covid(5, 8, 09-02-2021, 'Pfizer', 1).
+vacina√ß√£o_Covid(4, 5, 02-04-2021, 'Pfizer', 1).
+vacina√ß√£o_Covid(9, 8, 09-02-2021, 'Pfizer', 2).
+vacina√ß√£o_Covid(2, 1, 28-03-2021, 'Pfizer', 1).
+
+
+% ---------------------------------------------------------------------
+% Extens√£o do predicado fases: Fases, Data_Inicial, Data_Final, Caracter√≠sticas -> {V,F}
+
+fases(1, 01-02-2021, 28-02-2021, 'Ser m√©dico ou Enfermeiro').
+fases(2, 01-03-2021, 31-03-2021, 'Ter mais de 80 ou ter doen√ßas cr√≥nicas').
+fases(3, 01-04-2021, 31-04-2021, 'Toda a popula√ß√£o').
 
 
 % ---------------------------------------------------------------------
-% Extens„o do predicado fases: Fases, Data_Inicial, Data_Final, CaracterÌsticas -> {V,F}
-
-fases(1, 01-02-2021, 28-02-2021, 'Ser mÈdico ou Enfermeiro').
-fases(2, 01-03-2021, 31-03-2021, 'Ter mais de 80 ou ter doenÁas crÛnicas').
-fases(3, 01-04-2021, 31-04-2021, 'Toda a populaÁ„o').
-
+%	Invariantes
 % ---------------------------------------------------------------------
-% Invariante Estrutural ( N„o permitir a inserÁ„o de conhecimento repetido)
+% Invariante Estrutural ( N√£o permitir a inser√ß√£o de conhecimento repetido)
 
-+utente(Id, N∫SeguranÁa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss„o, [DoenÁas_CrÛnicas], CentroSa˙de) :: (solucoes((Id, N∫SeguranÁa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss„o, [DoenÁas_CrÛnicas], CentroSa˙de), (utente(Id, N∫SeguranÁa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss„o, [DoenÁas_CrÛnicas], CentroSa˙de)), S), 
++utente(Id, N¬∫Seguran√ßa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss√£o, [Doen√ßas_Cr√≥nicas], CentroSa√∫de) :: (solucoes((Id, N¬∫Seguran√ßa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss√£o, [Doen√ßas_Cr√≥nicas], CentroSa√∫de), (utente(Id, N¬∫Seguran√ßa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss√£o, [Doen√ßas_Cr√≥nicas], CentroSa√∫de)), S), 
                                                                                                                           comprimento(S, N),
                                                                                                                           N == 1).
 
-+centro_sa˙de(Idcentro, Nome, Morada, Telefone, Email) :: (solucoes((Idcentro, Nome, Morada, Telefone, Email), (centro_sa˙de(Idcentro, Nome, Morada, Telefone, Email)), S), 
++centro_sa√∫de(Idcentro, Nome, Morada, Telefone, Email) :: (solucoes((Idcentro, Nome, Morada, Telefone, Email), (centro_sa√∫de(Idcentro, Nome, Morada, Telefone, Email)), S), 
 														   comprimento(S, N), 
 														   N == 1).
 
@@ -93,29 +96,29 @@ fases(3, 01-04-2021, 31-04-2021, 'Toda a populaÁ„o').
 										   comprimento(S, N), 
 										   N == 1).
 
-+vacinaÁ„o_Covid(Staff, Utente, Data, Vacina, Toma) :: (solucoes((Staff, Utente, Data, Vacina, Toma), (vacinaÁ„o_Covid(Staff, Utente, Data, Vacina, Toma)), S),
++vacina√ß√£o_Covid(Staff, Utente, Data, Vacina, Toma) :: (solucoes((Staff, Utente, Data, Vacina, Toma), (vacina√ß√£o_Covid(Staff, Utente, Data, Vacina, Toma)), S),
 													    comprimento(S, N), 
 													    N == 1). 
 
 
 % ---------------------------------------------------------------------
-% Invariante Referencial -> N„o admitir mais que um utente com o mesmo ID
+% Invariante Referencial -> N√£o admitir mais que um utente com o mesmo ID
 
-+utente(Id, N∫SeguranÁa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss„o, [DoenÁas_CrÛnicas], CentroSa˙de) :: (solucoes(Id, (utente(Id, N∫SeguranÁa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss„o, [DoenÁas_CrÛnicas], CentroSa˙de)), S), 
++utente(Id, N¬∫Seguran√ßa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss√£o, [Doen√ßas_Cr√≥nicas], CentroSa√∫de) :: (solucoes(Id, (utente(Id, N¬∫Seguran√ßa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss√£o, [Doen√ßas_Cr√≥nicas], CentroSa√∫de)), S), 
 																														  comprimento(S, N), 
 																														  N == 1).
 
 
 % ---------------------------------------------------------------------
-% Invariante Referencial -> N„o admitir mais que um centro_sa˙de com o mesmo ID
+% Invariante Referencial -> N√£o admitir mais que um centro_sa√∫de com o mesmo ID
 
-+centro_sa˙de(Idcentro, Nome, Morada, Telefone, Email) :: (solucoes(Idcentro, (centro_sa˙de(Idcentro, Nome, Morada, Telefone, Email)), S), 
++centro_sa√∫de(Idcentro, Nome, Morada, Telefone, Email) :: (solucoes(Idcentro, (centro_sa√∫de(Idcentro, Nome, Morada, Telefone, Email)), S), 
 														   comprimento(S, N), 
 														   N == 1).
 
 
 % ---------------------------------------------------------------------
-% Invariante Referencial -> N„o admitir mais que um staff com o mesmo ID
+% Invariante Referencial -> N√£o admitir mais que um staff com o mesmo ID
 
 +staff(Idstaff, Idcentro, Nome, Email) :: (solucoes(Idstaff, (staff(Idstaff, Idcentro, Nome, Email)), S), 
 										   comprimento(S, N),
@@ -123,94 +126,79 @@ fases(3, 01-04-2021, 31-04-2021, 'Toda a populaÁ„o').
 
 
 % ---------------------------------------------------------------------
-% Invariante Referencial -> N„o admitir vacinaÁ„o_Covid marcadas a utentes ou staff que n„o existem
+% Invariante Referencial -> N√£o admitir vacina√ß√£o_Covid marcadas a utentes ou staff que n√£o existem
 
-+vacinaÁ„o_Covid(Staff, Utente,_,_,_) :: (utente(Utente,_,_,_,_,_,_,_,_,_), staff(Staff,_,_,_)).
++vacina√ß√£o_Covid(Staff, Utente,_,_,_) :: (utente(Utente,_,_,_,_,_,_,_,_,_), staff(Staff,_,_,_)).
 
 
 % ---------------------------------------------------------------------
-% Invariante Referencial -> N„o admitir a remoÁ„o de utentes ou staff que j· existam vacinaÁ„o_Covid com os mesmos
+% Invariante Referencial -> N√£o admitir a remo√ß√£o de utentes ou staff que j√° existam vacina√ß√£o_Covid com os mesmos
 
--utente(Id,_,_,_,_,_,_,_,_,_) :: (solucoes(Id, vacinaÁ„o_Covid(_,Id,_,_,_), S), 
+-utente(Id,_,_,_,_,_,_,_,_,_) :: (solucoes(Id, vacina√ß√£o_Covid(_,Id,_,_,_), S), 
 								  comprimento(S, N),
 								  N == 0).
 
--staff(Idstaff,_,_,_) :: (solucoes(Idstaff, vacinaÁ„o_Covid(Idstaff,_,_,_,_), S),
+-staff(Idstaff,_,_,_) :: (solucoes(Idstaff, vacina√ß√£o_Covid(Idstaff,_,_,_,_), S),
 						   comprimento(S, N),
 						   N == 0).
 
 
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite o registo de um utente: Id, N∫SeguranÁa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss„o, [DoenÁas_CrÛnicas], CentroSa˙de -> {V,F}
+%	Predicados de registo/remo√ß√£o de utentes, centro de sa√∫de, staff e vacina√ß√£o Covid
+% --------------------------------------------------------------------
 
-registoUtente(Id, N∫SeguranÁa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss„o, [DoenÁas_CrÛnicas], CentroSa˙de) :- evolucao(utente(Id, N∫SeguranÁa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss„o, [DoenÁas_CrÛnicas], CentroSa˙de)).
+% Extens√£o do predicado que permite o registo de um utente: Id, N¬∫Seguran√ßa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss√£o, [Doen√ßas_Cr√≥nicas], CentroSa√∫de -> {V,F}
+
+registoUtente(Id, N¬∫Seguran√ßa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss√£o, [Doen√ßas_Cr√≥nicas], CentroSa√∫de) :- evolucao(utente(Id, N¬∫Seguran√ßa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss√£o, [Doen√ßas_Cr√≥nicas], CentroSa√∫de)).
 
 
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite o registo de um centro_sa˙de: Idcentro, Nome, Morada, Telefone, Email -> {V,F}
+% Extens√£o do predicado que permite o registo de um centro_sa√∫de: Idcentro, Nome, Morada, Telefone, Email -> {V,F}
 
-registoCentroSaude(Idcentro, Nome, Morada, Telefone, Email) :- evolucao(centro_sa˙de(Idcentro, Nome, Morada, Telefone, Email)).
+registoCentroSaude(Idcentro, Nome, Morada, Telefone, Email) :- evolucao(centro_sa√∫de(Idcentro, Nome, Morada, Telefone, Email)).
 
 
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite o registo de um staff: Idstaff, Idcentro, Nome, Email -> {V,F}
+% Extens√£o do predicado que permite o registo de um staff: Idstaff, Idcentro, Nome, Email -> {V,F}
 
 registoStaff(Idstaff, Idcentro, Nome, Email) :- evolucao(staff(Idstaff, Idcentro, Nome, Email)).
 
 
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite o registo de uma vacinaÁ„o_Covid: Staff, Utente, Data, Vacina, Toma -> {V,F}
+% Extens√£o do predicado que permite o registo de uma vacina√ß√£o_Covid: Staff, Utente, Data, Vacina, Toma -> {V,F}
 
-registoVacinacaoCovid(Staff, Utente, Data, Vacina, Toma) :- evolucao(vacinaÁ„o_Covid(Staff, Utente, Data, Vacina, Toma)).
-
-
-% --------------------------------------------------------------------
-% Extens„o do predicado que permite a remoÁ„o de um utente: Id, N∫SeguranÁa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss„o, [DoenÁas_CrÛnicas], CentroSa˙de -> {V,F}
-
-remocaoUtente(Id, N∫SeguranÁa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss„o, [DoenÁas_CrÛnicas], CentroSa˙de) :- involucao(utente(Id, N∫SeguranÁa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss„o, [DoenÁas_CrÛnicas], CentroSa˙de)).
+registoVacinacaoCovid(Staff, Utente, Data, Vacina, Toma) :- evolucao(vacina√ß√£o_Covid(Staff, Utente, Data, Vacina, Toma)).
 
 
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite a remoÁ„o de um centro_sa˙de: Idcentro, Nome, Morada, Telefone, Email -> {V,F}
+% Extens√£o do predicado que permite a remo√ß√£o de um utente: Id, N¬∫Seguran√ßa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss√£o, [Doen√ßas_Cr√≥nicas], CentroSa√∫de -> {V,F}
 
-remocaoCentroSaude(Idcentro, Nome, Morada, Telefone, Email) :- involucao(centro_sa˙de(Idcentro, Nome, Morada, Telefone, Email)).
+remocaoUtente(Id, N¬∫Seguran√ßa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss√£o, [Doen√ßas_Cr√≥nicas], CentroSa√∫de) :- involucao(utente(Id, N¬∫Seguran√ßa_Social, Nome, Data_Nasc, Email, Telefone, Morada, Profiss√£o, [Doen√ßas_Cr√≥nicas], CentroSa√∫de)).
 
 
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite a remoÁ„o de um staff: Idstaff, Idcentro, Nome, Email -> {V,F}
+% Extens√£o do predicado que permite a remo√ß√£o de um centro_sa√∫de: Idcentro, Nome, Morada, Telefone, Email -> {V,F}
+
+remocaoCentroSaude(Idcentro, Nome, Morada, Telefone, Email) :- involucao(centro_sa√∫de(Idcentro, Nome, Morada, Telefone, Email)).
+
+
+% --------------------------------------------------------------------
+% Extens√£o do predicado que permite a remo√ß√£o de um staff: Idstaff, Idcentro, Nome, Email -> {V,F}
 
 remocaoStaff(Idstaff, Idcentro, Nome, Email) :- involucao(staff(Idstaff, Idcentro, Nome, Email)).
 
 
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite a remoÁ„o de uma vacinaÁ„o_Covid: Staff, Utente, Data, Vacina, Toma -> {V,F}
+% Extens√£o do predicado que permite a remo√ß√£o de uma vacina√ß√£o_Covid: Staff, Utente, Data, Vacina, Toma -> {V,F}
 
-remocaoVacinacaoCovid(Staff, Utente, Data, Vacina, Toma) :- involucao(vacinaÁ„o_Covid(Staff, Utente, Data, Vacina, Toma)).
+remocaoVacinacaoCovid(Staff, Utente, Data, Vacina, Toma) :- involucao(vacina√ß√£o_Covid(Staff, Utente, Data, Vacina, Toma)).
 
-
-% --------------------------------------------------------------------
-% Extens„o do predicado que permite a procura do conhecimento: Termo, Predicado, Lista -> {V,F}
-
-solucoes(X,Y,Z) :- findall(X,Y,Z).
 
 
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite a negaÁ„o: N -> {V,F}
-
-nao(N) :- N,!,false.
-nao(_).
-
-
+%	Predicados de evolu√ß√£o e involu√ß√£o de conhecimento
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite concluir se um elemento pertence a uma lista: Elemento, Lista -> {V,F}
-
-pertence(H,[H|_]).
-pertence(E,[H|T]) :- E \= H,
-					 pertence(E,T).
-
-
-% --------------------------------------------------------------------
-% Extens„o do predicado que permite a evoluÁ„o do conhecimento: T -> {V,F}
+% Extens√£o do predicado que permite a evolu√ß√£o do conhecimento: T -> {V,F}
 
 evolucao(Termo) :- solucoes(Invariante, +Termo::Invariante, Lista),
 				   insercao(Termo),
@@ -225,7 +213,7 @@ teste([R|LR]) :- R,
 
 
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite a involuÁ„o do conhecimento: T -> {V,F}
+% Extens√£o do predicado que permite a involu√ß√£o do conhecimento: T -> {V,F}
 
 involucao(Termo) :- Termo,
 					solucoes(Invariante, -Termo::Invariante, Lista),
@@ -235,8 +223,31 @@ involucao(Termo) :- Termo,
 remocao(Termo) :- retract(Termo).
 remocao(Termo) :- assert(Termo), !, fail.
 
+
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite colocar uma lista com elementos ˙nicos: Lista_Original, Lista_Reultado -> {V,F}
+% Extens√£o do predicado que permite a procura do conhecimento: Termo, Predicado, Lista -> {V,F}
+
+solucoes(X,Y,Z) :- findall(X,Y,Z).
+
+% --------------------------------------------------------------------
+%	Predicados gerais/auxiliares
+% --------------------------------------------------------------------
+% Extens√£o do predicado que permite a nega√ß√£o: N -> {V,F}
+
+nao(N) :- N,!,false.
+nao(_).
+
+
+% --------------------------------------------------------------------
+% Extens√£o do predicado que permite concluir se um elemento pertence a uma lista: Elemento, Lista -> {V,F}
+
+pertence(H,[H|_]).
+pertence(E,[H|T]) :- E \= H,
+		     pertence(E,T).
+
+
+% --------------------------------------------------------------------
+% Extens√£o do predicado que permite colocar uma lista com elementos √∫nicos: Lista_Original, Lista_Reultado -> {V,F}
 
 semRepetidos([],[]).
 semRepetidos([H|T], S) :- pertence(H,T),
@@ -246,7 +257,7 @@ semRepetidos([H|T], [H|S]) :- nao(pertence(H,T)),
 
 
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite determinar a maior entre duas datas
+% Extens√£o do predicado que permite determinar a maior entre duas datas
 
 maiorData(D1-M1-A1,D2-M2-A2,D2-M2-A2) :- A2 > A1; 
 										 (A2 == A1, M2 > M1); 
@@ -257,20 +268,20 @@ maiorData(D1-M1-A1,D2-M2-A2,D1-M1-A1) :- A2 < A1;
 
 
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite determinar a idade de um utente: Data_Nasc, Idade -> {V,F}
+% Extens√£o do predicado que permite determinar a idade de um utente: Data_Nasc, Idade -> {V,F}
 
 idade(_-_-A,S) :- (S is 2021-A).
 
 
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite verificar se uma data est· entre outras: Data_Inicio, Data_Fim, Data_Avaliada -> {V,F}
+% Extens√£o do predicado que permite verificar se uma data est√° entre outras: Data_Inicio, Data_Fim, Data_Avaliada -> {V,F}
 
 dataIntermedia(DI,DF,DA) :-	maiorData(DI,DA,DA),
 							maiorData(DF,DA,DF).
 
 
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite verificar o comprimento de uma lista: Lista, Comprimento -> {V,F}
+% Extens√£o do predicado que permite verificar o comprimento de uma lista: Lista, Comprimento -> {V,F}
 
 comprimento([],0).
 comprimento([_|T],N) :- comprimento(T,R),
@@ -278,57 +289,59 @@ comprimento([_|T],N) :- comprimento(T,R),
 
 
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite determinar a diferenÁa de datas em dias: Data_Inicio, Data_Fim, Dias -> {V,F}
+% Extens√£o do predicado que permite determinar a diferen√ßa de datas em dias: Data_Inicio, Data_Fim, Dias -> {V,F}
 
 %diasIntermedios(D1-M1-A1,D,D2-M2-A2) :- (D1 > )
 
 
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite identificar as pessoas vacinadas
+%	Predicados sobre funcionalidades do programa e auxiliares √†s mesmas
+% --------------------------------------------------------------------
+% Extens√£o do predicado que permite identificar as pessoas vacinadas
 
-vacinados(S) :-	solucoes((UtenteID,Nome),(utente(UtenteID,_,Nome,_,_,_,_,_,_,_),vacinaÁ„o_Covid(_,UtenteID,_,_,_)),S1),
+vacinados(S) :-	solucoes((UtenteID,Nome),(utente(UtenteID,_,Nome,_,_,_,_,_,_,_),vacina√ß√£o_Covid(_,UtenteID,_,_,_)),S1),
 				semRepetidos(S1,S).
 
 
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite identificar as pessoas n„o vacinadas
+% Extens√£o do predicado que permite identificar as pessoas n√£o vacinadas
 
-naoVacinados(S) :- solucoes((UtenteID,Nome),(utente(UtenteID,_,Nome,_,_,_,_,_,_,_),nao(vacinaÁ„o_Covid(_,UtenteID,_,_,_))),S).
-
-
-% --------------------------------------------------------------------
-% Extens„o do predicado que permite identificar as pessoas vacinadas indevidamente
-
-vacinadosIndevidamente(S) :- solucoes((UtenteID,Nome),(utente(UtenteID,_,Nome,_,_,_,_,_,_,_), vacinaÁ„o_Covid(_,UtenteID,Data,_,1), vacinadoIndevidamente(UtenteID,Data)), S).
+naoVacinados(S) :- solucoes((UtenteID,Nome),(utente(UtenteID,_,Nome,_,_,_,_,_,_,_),nao(vacina√ß√£o_Covid(_,UtenteID,_,_,_))),S).
 
 
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite identificar as pessoas n„o vacinadas e candidatas ao mesmo
+% Extens√£o do predicado que permite identificar as pessoas vacinadas indevidamente
 
-candidatosVacinaÁ„o(DataAtual, S) :- solucoes((UtenteID,Nome),(utente(UtenteID,_,Nome,_,_,_,_,_,_,_), nao(vacinaÁ„o_Covid(_,UtenteID,_,_,_)), nao(vacinadoIndevidamente(UtenteID,DataAtual))),S).
-
-% --------------------------------------------------------------------
-% Extens„o do predicado que permite identificar as pessoas vacinadas com a lacuna da segunda dose
-
-faltaSegundaDose(S) :- solucoes((UtenteID,Nome),(utente(UtenteID,_,Nome,_,_,_,_,_,_,_), vacinaÁ„o_Covid(_,UtenteID,_,_,1), nao(vacinaÁ„o_Covid(_,UtenteID,_,_,2))), S).
+vacinadosIndevidamente(S) :- solucoes((UtenteID,Nome),(utente(UtenteID,_,Nome,_,_,_,_,_,_,_), vacina√ß√£o_Covid(_,UtenteID,Data,_,1), vacinadoIndevidamente(UtenteID,Data)), S).
 
 
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite perceber se a segunda dose foi administrada atempadamente
+% Extens√£o do predicado que permite identificar as pessoas n√£o vacinadas e candidatas ao mesmo
 
-% segundaDoseAtrasada(UtenteID, S) :-	solucoes(Data,(vacinaÁ„o_Covid(_,UtenteID,_,_,1)),D1),
-% 									    solucoes(Data,(vacinaÁ„o_Covid(_,UtenteID,_,_,2)),D2).
+candidatosVacina√ß√£o(DataAtual, S) :- solucoes((UtenteID,Nome),(utente(UtenteID,_,Nome,_,_,_,_,_,_,_), nao(vacina√ß√£o_Covid(_,UtenteID,_,_,_)), nao(vacinadoIndevidamente(UtenteID,DataAtual))),S).
+
+% --------------------------------------------------------------------
+% Extens√£o do predicado que permite identificar as pessoas vacinadas com a lacuna da segunda dose
+
+faltaSegundaDose(S) :- solucoes((UtenteID,Nome),(utente(UtenteID,_,Nome,_,_,_,_,_,_,_), vacina√ß√£o_Covid(_,UtenteID,_,_,1), nao(vacina√ß√£o_Covid(_,UtenteID,_,_,2))), S).
+
+
+% --------------------------------------------------------------------
+% Extens√£o do predicado que permite perceber se a segunda dose foi administrada atempadamente
+
+% segundaDoseAtrasada(UtenteID, S) :-	solucoes(Data,(vacina√ß√£o_Covid(_,UtenteID,_,_,1)),D1),
+% 									    solucoes(Data,(vacina√ß√£o_Covid(_,UtenteID,_,_,2)),D2).
 % 									    dataIntermedia
 
 
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite identificar a profiss„o de um utente.
+% Extens√£o do predicado que permite identificar a profiss√£o de um utente.
 
-profiss„oUtente(UtenteID, X) :- solucoes(Profiss„o,utente(UtenteID,_,_,_,_,_,_,Profiss„o,_,_),[X]).
+profiss√£oUtente(UtenteID, X) :- solucoes(Profiss√£o,utente(UtenteID,_,_,_,_,_,_,Profiss√£o,_,_),[X]).
 
 
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite identificar se um utente tem mais de 80 anos de idade.
+% Extens√£o do predicado que permite identificar se um utente tem mais de 80 anos de idade.
 
 utenteSenior(UtenteID) :- solucoes(Data_Nasc,utente(UtenteID,_,_,Data_Nasc,_,_,_,_,_,_),[S1]),
 						  idade(S1,S),
@@ -336,15 +349,15 @@ utenteSenior(UtenteID) :- solucoes(Data_Nasc,utente(UtenteID,_,_,Data_Nasc,_,_,_
 
 
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite identificar se um utente tem mais de 80 anos de idade.
+% Extens√£o do predicado que permite identificar se um utente tem mais de 80 anos de idade.
 
-utenteDonteCronico(UtenteID) :- solucoes(DoenÁas_CrÛnicas,utente(UtenteID,_,_,_,_,_,_,_,DoenÁas_CrÛnicas,_),[S1]),
+utenteDonteCronico(UtenteID) :- solucoes(Doen√ßas_Cr√≥nicas,utente(UtenteID,_,_,_,_,_,_,_,Doen√ßas_Cr√≥nicas,_),[S1]),
 								nao(S1 == '[]').
 
 
 % --------------------------------------------------------------------
-% Extens„o do predicado que permite identificar se utente est· indevidamente vacinado.
+% Extens√£o do predicado que permite identificar se utente est√° indevidamente vacinado.
 
-vacinadoIndevidamente(UtenteID, Data) :- nao((dataIntermedia(01-02-2021,28-02-2021,Data), (profiss„oUtente(UtenteID,'MÈdico'); profiss„oUtente(UtenteID,'Enfermeiro')));
-									     (dataIntermedia(01-03-2021,31-03-2021,Data), (utenteSenior(UtenteID); utenteDonteCronico(UtenteID)), nao(profiss„oUtente(UtenteID,'MÈdico'); profiss„oUtente(UtenteID,'Enfermeiro')));
-									     (dataIntermedia(01-04-2021,30-04-2021,Data), nao(profiss„oUtente(UtenteID,'MÈdico'); profiss„oUtente(UtenteID,'Enfermeiro'); utenteSenior(UtenteID); utenteDonteCronico(UtenteID)))).
+vacinadoIndevidamente(UtenteID, Data) :- nao((dataIntermedia(01-02-2021,28-02-2021,Data), (profiss√£oUtente(UtenteID,'M√©dico'); profiss√£oUtente(UtenteID,'Enfermeiro')));
+									     (dataIntermedia(01-03-2021,31-03-2021,Data), (utenteSenior(UtenteID); utenteDonteCronico(UtenteID)), nao(profiss√£oUtente(UtenteID,'M√©dico'); profiss√£oUtente(UtenteID,'Enfermeiro')));
+									     (dataIntermedia(01-04-2021,30-04-2021,Data), nao(profiss√£oUtente(UtenteID,'M√©dico'); profiss√£oUtente(UtenteID,'Enfermeiro'); utenteSenior(UtenteID); utenteDonteCronico(UtenteID)))).
