@@ -295,12 +295,6 @@ comprimento([_|T],N) :- comprimento(T,R),
 
 
 % --------------------------------------------------------------------
-% Extensão do predicado que permite determinar a diferença de datas em dias: Data_Inicio, Data_Fim, Dias -> {V,F}
-
-%diasIntermedios(D1-M1-A1,D,D2-M2-A2) :- (D1 > )
-
-
-% --------------------------------------------------------------------
 %	Predicados sobre funcionalidades do programa e auxiliares às mesmas
 % --------------------------------------------------------------------
 % Extensão do predicado que permite identificar as pessoas vacinadas
@@ -330,14 +324,6 @@ candidatosVacinação(DataAtual, S) :- solucoes((UtenteID,Nome),(utente(UtenteID,_
 % Extensão do predicado que permite identificar as pessoas vacinadas com a lacuna da segunda dose
 
 faltaSegundaDose(S) :- solucoes((UtenteID,Nome),(utente(UtenteID,_,Nome,_,_,_,_,_,_,_), vacinação_Covid(_,UtenteID,_,_,1), nao(vacinação_Covid(_,UtenteID,_,_,2))), S).
-
-
-% --------------------------------------------------------------------
-% Extensão do predicado que permite perceber se a segunda dose foi administrada atempadamente
-
-% segundaDoseAtrasada(UtenteID, S) :-	solucoes(Data,(vacinação_Covid(_,UtenteID,_,_,1)),D1),
-% 									    solucoes(Data,(vacinação_Covid(_,UtenteID,_,_,2)),D2).
-% 									    dataIntermedia
 
 
 % --------------------------------------------------------------------
