@@ -561,14 +561,16 @@ excecao(utente(12, '34611111368', 'Mabi Ferreira', 18-06-2000, 'mabiferr@gmail.c
 excecao(staff(12, 2, 'Maria Josefina Silva', 'josefaSilva@gmail.com')).
 excecao(staff(12, 2, 'Josefina Silva', 'josefaSilva@gmail.com')).
 
-
-% Um membro do staff que trabalha nos 3 centros de saúde
-
-excecao(staff(13, Idcentro, 'Roberto Santiago', 'robertiago@gmail.com')) :- Idcentro >= 1,
-																			Idcentro =< 3.>
-
-
 % Um centro de saúde com mais que um número de telefone
 
 excecao(centro_saúde(4, 'Centro de Saúde de Barcelos', 'Rua do Galo, Barcelos', '256248596', 'centroBarcelos@gmail.com')).
 excecao(centro_saúde(4, 'Centro de Saúde de Barcelos', 'Rua do Galo, Barcelos', '256248597', 'centroBarcelos@gmail.com')).
+
+
+% Um membro do staff que trabalha nos 3 centros de saúde
+
+excecao(staff(13, Idcentro, 'Roberto Santiago', 'robertiago@gmail.com')) :- Idcentro >= 1,
+																			Idcentro =< 3.
+
+
+
